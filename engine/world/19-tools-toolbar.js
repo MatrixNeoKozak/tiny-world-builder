@@ -1686,6 +1686,7 @@
   function clickLegacyControlButton(id) {
     const el = document.getElementById(id);
     if (el && !el.hidden) {
+      el.click();
       return true;
     }
     if (id === 'stamp-builder') {
@@ -1694,8 +1695,11 @@
         api.toggle();
         return true;
       }
-      el.click();
-      return true;
+      if (el) {
+        el.click();
+        return true;
+      }
+      return false;
     }
     if (id === 'account-btn') {
       const login = document.getElementById('auth-login-btn-top');
